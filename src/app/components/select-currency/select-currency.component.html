@@ -1,0 +1,4 @@
+<div class="absolute top-2 left-2 flex gap-1">
+  <button type="button" class="transition-colors" [class.text-slate-500]="value() !== 'USD'" [class.text-white]="value() === 'USD'" (click)="setValue('USD')">$</button>
+  <button type="button" class="transition-colors" [class.text-slate-500]="value() !== 'EUR'" [class.text-white]="value() === 'EUR'" (click)="setValue('EUR')">€</button>
+</div>

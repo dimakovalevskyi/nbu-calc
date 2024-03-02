@@ -1,0 +1,34 @@
+<app-select-currency />
+<app-select-separator />
+
+<div class="flex gap-5 mb-10">
+  <div class="flex-1 text-center">
+    <label for="date" class="text-white text-base mb-1">Станом на:</label>
+    <input type="date" id="date" [ngModel]="formattedDate()" (ngModelChange)="formattedDate.set($event)" [max]="todayFormattedValue" required class="text-sm max-h-8 rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+  </div>
+  <div class="flex-1 text-center">
+    <label for="amount" class="text-white text-base mb-1">Сума:</label>
+    <input type="number" id="amount" [ngModel]="amount()" (ngModelChange)="amount.set($event)" [min]="0" placeholder="0.00" required autofocus class="text-sm max-h-8 rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+  </div>
+</div>
+
+<div class="text-center mb-8 text-2xl text-white">
+  1 {{currency()}} =
+  <span class="inline-flex items-center rounded-md text-green-100 bg-green-900 px-2 py-1">
+    {{ formattedRate() || '...' }}
+    <app-copy-icon [value]="formattedRate()"/>
+  </span> UAH
+</div>
+@if (formattedResult()) {
+  <div class="text-center mb-8 text-xl text-white">
+    {{ amount() }} {{currency()}} =
+    <span class="inline-flex items-center rounded-md text-green-100 bg-green-900 px-2 py-1">
+      {{ formattedResult() }}
+      <app-copy-icon [value]="formattedResult()"/>
+    </span> UAH
+  </div>
+} @else {
+  <div class="text-center mb-8 text-xl text-white">
+    <span class="inline-flex items-center rounded-md text-gray-100 bg-gray-900 px-2 py-1">Введіть суму</span>
+  </div>
+}
