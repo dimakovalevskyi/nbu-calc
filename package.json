@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --base-href /nbu-calc/",
     "watch": "ng build --watch --configuration development",
-    "deploy": "ng build && gh-pages -d dist/nbu-calc/browser",
+    "deploy": "npm run build && gh-pages -d dist/nbu-calc/browser",
     "test": "ng test"
   },
   "private": true,
